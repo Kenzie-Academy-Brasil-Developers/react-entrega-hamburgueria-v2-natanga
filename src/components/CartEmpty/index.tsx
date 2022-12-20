@@ -1,6 +1,6 @@
 
+import { StyledTypography } from "../BaseTypography/style";
 import { StlyesCartEmpty } from "./style";
-import {StyledTypography} from "../../BaseTypography/style.js"
 export function CartEmpty() {
   return (
     <StlyesCartEmpty>

@@ -1,15 +1,14 @@
 import { StlyesCart } from "./style";
 import { StyledTypography } from "../BaseTypography/style";
-import { ProductsListCart } from "./ListCart";
+import { useContext } from "react";
+import { HomeContext } from "../../context/HomeContext";
+import { ProductsListCart } from "../ListCart";
+import { CartEmpty } from "../CartEmpty";
 import { StyledButtons } from "../../Styles/Buttons";
-import { CartEmpty } from "./CartEmpty";
 
-export function MyCart({ currentSale, setCurrentSale, cart, SetCart }) {
-  function ContValue() {
-    const values = currentSale.map((element) =>  element.price * element.quant);
-    const value = values.reduce((valueOne, valueTwo) => valueOne + valueTwo, 0);
-    return value;
-  }
+export function MyCart() {
+
+  const { cart, SetCart, setCurrentSale } = useContext(HomeContext)
 
   return (
     <StlyesCart>
@@ -20,18 +19,14 @@ export function MyCart({ currentSale, setCurrentSale, cart, SetCart }) {
       </div>
       {cart ? (
         <>
-          <ProductsListCart
-            currentSale={currentSale}
-            setCurrentSale={setCurrentSale}
-            SetCart={SetCart}
-          />
+          <ProductsListCart />
           <section>
-              <StyledTypography tag="p" classText="Body600">
-                Total
+            <StyledTypography tag="p" classText="Body600">
+              Total
               <span>
                 $ {ContValue()}
               </span>
-              </StyledTypography>
+            </StyledTypography>
             <StyledButtons
               nameButtons="bntTwo"
               onClick={() => {

@@ -1,19 +1,14 @@
+import { useContext } from "react";
+import { HomeContext } from "../../context/HomeContext";
+import { Iiten } from "../../interface";
 import { StyledButtons } from "../../Styles/Buttons";
 import { StyledTypography } from "../BaseTypography/style";
 import { StlyesProduct } from "./style";
-export function Product({ SetCart, product, currentSale, setCurrentSale }) {
-  function AddItenCart() {
-    SetCart(true);
-    const valid = currentSale.find((element) => element.id === product.id);
-    if (valid) {
-      valid.quant = valid.quant + 1;
-      const newList = currentSale.filter((element) => element.id !== valid.id);
-      setCurrentSale([...newList, valid]);
-    } else {
-      product.quant = 1;
-      setCurrentSale([...currentSale, product]);
-    }
-  }
+
+export function Product({ product }) {
+
+  const { AddItenCart } = useContext(HomeContext)
+
 
   return (
     <StlyesProduct>
@@ -33,7 +28,7 @@ export function Product({ SetCart, product, currentSale, setCurrentSale }) {
         <StyledButtons
           nameButtons="bntOne"
           onClick={() => {
-            AddItenCart();
+            AddItenCart(product);
           }}
         >
           Adicionar

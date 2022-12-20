@@ -1,17 +1,14 @@
-import { CardCarts } from "./CardCarts";
+import { useContext } from "react";
+import { HomeContext } from "../../context/HomeContext";
+import { CardCarts } from "../CardCarts";
 import { StlyesList } from "./style";
 
-export function ProductsListCart({ currentSale, setCurrentSale,SetCart}) {
+export function ProductsListCart() {
+  const { currentSale } = useContext(HomeContext)
   return (
     <StlyesList>
-      {currentSale.map((product) => (
-        <CardCarts
-          product={product}
-          key={product.id}
-          currentSale={currentSale}
-          setCurrentSale={setCurrentSale}
-          SetCart={SetCart}
-        ></CardCarts>
+      {currentSale.map((iten) => (
+        <CardCarts product={iten}/>
       ))}
     </StlyesList>
   );

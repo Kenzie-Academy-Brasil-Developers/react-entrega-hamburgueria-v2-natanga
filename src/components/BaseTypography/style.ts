@@ -1,9 +1,13 @@
 import styled, { css } from "styled-components";
 import { BaseTypography } from ".";
 
+interface IStyledTypography {
+  classText: "Heading1" | "Heading2" | "Heading3" | "Heading4" | "Heading" | "Body" | "Body600" | "Caption"
+}
+
 export const StyledTypography = styled(BaseTypography)`
   margin: 0;
-  ${({ classText }) => {
+  ${({ classText }: IStyledTypography) => {
     switch (classText) {
       case "Heading1":
         return css`

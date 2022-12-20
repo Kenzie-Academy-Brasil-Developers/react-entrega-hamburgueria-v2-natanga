@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const StyledForm = styled.form`
+export const StyledSheradItens = styled.form`
   width: 95%;
   height: 60px;
   display: flex;

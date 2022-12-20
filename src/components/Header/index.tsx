@@ -1,17 +1,15 @@
+
 import { StyledTypography } from "../BaseTypography/style";
-import { Form } from "./Form";
+import { SheradItens } from "../SheradItens";
 import { StyledHeader } from "./style";
-export function Header({ products, setFilteredProducts }) {
+export function Header() {
   return (
     <StyledHeader>
       <div>
         <StyledTypography tag="h1" classText="Heading1">
           <span> Nono's</span> Burguer
         </StyledTypography>
-        <Form
-          products={products}
-          setFilteredProducts={setFilteredProducts}
-        ></Form>
+        <SheradItens/>
       </div>
     </StyledHeader>
   );

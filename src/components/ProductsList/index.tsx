@@ -1,12 +1,22 @@
-import { Product } from "./Product/";
+import { useContext, useEffect } from "react";
+import { HomeContext } from "../../context/HomeContext";
+import { Product } from "../ProductCard";
 import { StlyesList } from "./style";
 
-export function ProductsList({SetCart, filteredProducts ,currentSale,setCurrentSale }) {
+export function ProductsList() {
+
+  const { get, filteredProducts } = useContext(HomeContext)
+
+  useEffect(() => {
+    get()
+    console.log(filteredProducts);
+  }, [filteredProducts])
+
+
   return (
     <StlyesList>
-      {filteredProducts.map((product) => 
-        <Product 
-        SetCart={SetCart} product={product} key={product.id}setCurrentSale={setCurrentSale} currentSale={currentSale}></Product>
+      {filteredProducts.map((product) =>
+        <Product product={product} key={product.id} />
       )}
     </StlyesList>
   );
