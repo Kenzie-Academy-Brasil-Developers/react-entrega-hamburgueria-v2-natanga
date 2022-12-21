@@ -8,7 +8,7 @@ export function ProductsListCart() {
   return (
     <StlyesList>
       {currentSale.map((iten) => (
-        <CardCarts product={iten}/>
+        <CardCarts product={iten} key={iten.id}/>
       ))}
     </StlyesList>
   );

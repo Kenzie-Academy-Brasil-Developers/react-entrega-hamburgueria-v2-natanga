@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StlyesList = styled.ul`
+width: 100%;
   padding: 0;
   margin: 30px auto;
   display: flex;
@@ -10,7 +11,6 @@ export const StlyesList = styled.ul`
   gap: 25px;
   overflow-x: scroll;
   @media (min-width: 700px) {
-    width: 70%;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;

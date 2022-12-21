@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledHeader = styled.header`
   padding: 20px 0;
-  width: 100vw;
+  width: 100%;
   height: 100%;
   background-color: var(--Color-grey-20);
   div {
@@ -16,7 +16,16 @@ export const StyledHeader = styled.header`
     gap: 10px;
   }
   h1 > span {
-    color: #1f4e70;
+    color: var(--Color-logo);
+  }
+  nav{
+    width: 60%;
+    display: flex;
+    align-items: center
+  }
+  nav div{
+    width: 15%;
+    height: 100%;
   }
   @media (min-width: 700px) {
     div {

@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { HomeContext } from "../../context/HomeContext";
-import { StyledButtons } from "../../Styles/Buttons";
+import { IPropCard } from "../../interface";
+import { StyledButtons } from "../../styles/Buttons";
 import { StyledTypography } from "../BaseTypography/style";
 import { StlyesProduct } from "./style";
 
-export function CardCarts({ product }) {
+export function CardCarts({product}: IPropCard) {
   const { removeCart } = useContext(HomeContext)
   return (
     <StlyesProduct>
@@ -23,7 +24,7 @@ export function CardCarts({ product }) {
         <StyledButtons
           nameButtons="bntTree"
           onClick={() => {
-            removeCart(product);
+            removeCart(product.id);
           }}
         >
           Remover

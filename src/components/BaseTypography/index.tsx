@@ -1,11 +1,12 @@
 interface IbaseComponents {
     children: React.ReactNode;
-    className: string;
+    className?: string;
     tag: string;
+    htmlFor?:string;
 }
 
 
-export const BaseTypography = ({ children, className, tag }: IbaseComponents) => {
+export const BaseTypography = ({ children, className, tag , htmlFor }: IbaseComponents) => {
     return (
         <>
             {tag === "h1" && <h1 className={className}>{children}</h1>}

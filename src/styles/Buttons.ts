@@ -1,9 +1,11 @@
 import styled, { css } from "styled-components";
-
+import cart from "../assets/icons/cart.svg"
+import logoot from "../assets/icons/logoot.svg"
+import sherad from "../assets/icons/sherad.svg"
 
 
 interface InameButtons {
-  nameButtons: "bntOne" | "bntTwo" | "bntTree"
+  nameButtons: "bntOne" | "bntTwo" | "bntTree" | "bntCart" | "bntLogout" | "bntSherad"
 }
 
 export const StyledButtons = styled.button`
@@ -47,6 +49,39 @@ export const StyledButtons = styled.button`
             color: var(--Color-gray-100);
           }
         `;
+      case "bntCart":
+        return css`
+            background-color: transparent;
+            background-image: url(${cart});
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            width: 30px;
+            height: 30px;
+          `;
+      case "bntLogout":
+        return css`
+            background-color: transparent;
+            background-image: url(${logoot});
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            width: 30px;
+            height: 30px;
+          `;
+      case "bntSherad":
+        return css`
+            background-color: transparent;
+            background-image: url(${sherad});
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            width: 30px;
+            height: 30px;
+          `;
     }
   }}
 `;

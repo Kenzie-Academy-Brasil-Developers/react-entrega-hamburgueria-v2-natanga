@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { BaseTypography } from ".";
 
 interface IStyledTypography {
-  classText: "Heading1" | "Heading2" | "Heading3" | "Heading4" | "Heading" | "Body" | "Body600" | "Caption"
+  classText: "Heading1" | "Heading2" | "Heading3" | "Heading4" | "Heading" | "Body" | "Body600" | "Caption"|"label"
 }
 
 export const StyledTypography = styled(BaseTypography)`

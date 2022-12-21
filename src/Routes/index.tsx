@@ -7,8 +7,8 @@ import RegisterPage from "../pages/Register";
 export function RoutePages() {
     return (
         <Routes>
-            <Route path="/Home" element={<HomePage />} />
             <Route path="/" element={<LoginPage />} />
+            <Route path="/Home" element={<HomePage />} />
             <Route path="/Register" element={<RegisterPage />} />
             <Route path="*" element={<Navigate to={"/Home"} />}/>
         </Routes>

@@ -2,7 +2,7 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form"
 import { HomeContext } from "../../context/HomeContext";
-import { StyledButtons } from "../../Styles/Buttons";
+import { StyledButtons } from "../../styles/Buttons";
 import { StyledSheradItens } from "./style";
 
 export function SheradItens() {

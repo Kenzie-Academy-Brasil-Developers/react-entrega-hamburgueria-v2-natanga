@@ -8,7 +8,7 @@ export interface IPerson {
 
 export interface Iregister extends IPerson {
     name: string;
-    passwordConfirm:string;
+    passwordConfirm: string;
 }
 
 export interface bodyLogin {
@@ -39,7 +39,8 @@ export interface IAuthContextValue {
     user: boolean;
     login: (bodyLogin: bodyLogin) => void;
     loading: boolean;
-    setLoading: React.Dispatch<React.SetStateAction<boolean>>
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+    AuthLogin: () => void
 }
 export interface Iiten {
     id: number,
@@ -47,4 +48,8 @@ export interface Iiten {
     category: string,
     price: number,
     img?: string,
-  }
+    quant:  number ,
+}
+export interface IPropCard {
+    product:Iiten;
+}

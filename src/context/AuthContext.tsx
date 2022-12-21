@@ -1,11 +1,12 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { bodyLogin, IAuthContextValue, IAuthProvider } from "../interface";
+import { bodyLogin, IAuthContextValue, IProvider } from "../interface";
 import { api } from "../services/api/api";
 import { loginApi } from "../services/api/loginApi";
 import { saveId } from "../services/localStorage/saveId";
 import { saveToken } from "../services/localStorage/saveToken";
+import { recoveryToken } from "../services/localStorage/saveToken"
 
 
 export const AuthContext = createContext({} as IAuthContextValue)
@@ -24,15 +25,26 @@ export function AuthProvider({ children }: IProvider) {
             api.defaults.headers.Authorization = `Bearer ${accessToken}`;
             toast.success("Seja Bem Vindo Novamente");
             setUser(user)
-            navigate("/Home");
             setLoading(true)
+            navigate("/Home");
         } else {
             toast.success(`${response.statusText}`);
         }
     }
 
+    const AuthLogin =  () => {
+        const token = recoveryToken()
+        if (!token) {
+            navigate("/")
+        }
+        api.defaults.headers.Authorization = `Bearer ${token}`
+
+    }
+
+    useEffect(AuthLogin,[])
+
     return (
-        <AuthContext.Provider value={{ user, login, loading, setLoading }}>
+        <AuthContext.Provider value={{ user, login, loading, setLoading ,AuthLogin}}>
             {children}
         </AuthContext.Provider>
     )

@@ -1,14 +1,13 @@
 import { useContext } from "react";
 import { HomeContext } from "../../context/HomeContext";
-import { Iiten } from "../../interface";
-import { StyledButtons } from "../../Styles/Buttons";
+import { IPropCard } from "../../interface";
+import { StyledButtons } from "../../styles/Buttons";
 import { StyledTypography } from "../BaseTypography/style";
 import { StlyesProduct } from "./style";
 
-export function Product({ product }) {
+export function Product({product}:IPropCard) {
 
   const { AddItenCart } = useContext(HomeContext)
-
 
   return (
     <StlyesProduct>

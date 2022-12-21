@@ -9,14 +9,12 @@ export function ProductsList() {
 
   useEffect(() => {
     get()
-    console.log(filteredProducts);
-  }, [filteredProducts])
-
+  }, [])
 
   return (
     <StlyesList>
-      {filteredProducts.map((product) =>
-        <Product product={product} key={product.id} />
+      {filteredProducts?.map((product) =>
+        <Product product={product}  key={product.id} />
       )}
     </StlyesList>
   );

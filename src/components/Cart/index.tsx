@@ -4,11 +4,11 @@ import { useContext } from "react";
 import { HomeContext } from "../../context/HomeContext";
 import { ProductsListCart } from "../ListCart";
 import { CartEmpty } from "../CartEmpty";
-import { StyledButtons } from "../../Styles/Buttons";
+import { StyledButtons } from "../../styles/Buttons";
+
 
 export function MyCart() {
-
-  const { cart, SetCart, setCurrentSale } = useContext(HomeContext)
+  const { cart, SetCart, ContValue, setCurrentSale, setModalCart } = useContext(HomeContext)
 
   return (
     <StlyesCart>
@@ -16,6 +16,9 @@ export function MyCart() {
         <StyledTypography tag="h2" classText="Heading3">
           Carrinho de Compras
         </StyledTypography>
+        <StyledButtons nameButtons="bntOne" onClick={() => {
+          setModalCart(false)
+        }}>X</StyledButtons>
       </div>
       {cart ? (
         <>

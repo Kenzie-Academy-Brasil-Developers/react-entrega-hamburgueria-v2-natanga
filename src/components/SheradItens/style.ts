@@ -25,6 +25,6 @@ export const StyledSheradItens = styled.form`
     border: transparent;
   }
   @media (min-width: 700px) {
-    width: 30%;
+    width: 70%;
   }
 `;

@@ -1,18 +1,24 @@
 import { createContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Iiten, IProvider } from "../interface";
 import { getItens } from "../services/api/getItens";
+import { removeId } from "../services/localStorage/saveId"
+import { removeToken } from "../services/localStorage/saveToken"
 
 interface IHomeContext {
+    modalCart: boolean;
+    setModalCart: React.Dispatch<React.SetStateAction<boolean>>;
     get: () => void;
     sherad(data: any): void;
     filteredProducts: Iiten[];
     cart: boolean;
     SetCart: React.Dispatch<React.SetStateAction<boolean>>;
     currentSale: Iiten[];
-    setCurrentSale: React.Dispatch<React.SetStateAction<number>>;
+    setCurrentSale: React.Dispatch<React.SetStateAction<Iiten[]>>;
     ContValue: () => number;
-    AddItenCart: () => void;
-    removeCart: () => void;
+    AddItenCart: (product: Iiten) => void;
+    removeCart: (product: number) => void;
+    logout: () => void;
 }
 
 interface Isherad {
@@ -26,8 +32,8 @@ export function HomeProvider({ children }: IProvider) {
     const [filteredProducts, setFilteredProducts] = useState([] as Iiten[]);
     const [currentSale, setCurrentSale] = useState([] as Iiten[]);
     const [cart, SetCart] = useState(false);
-
-
+    const [modalCart, setModalCart] = useState(false);
+    const navigate = useNavigate();
 
     async function get() {
         const response = await getItens();
@@ -35,8 +41,8 @@ export function HomeProvider({ children }: IProvider) {
         setFilteredProducts(response);
     }
 
-    function sherad(data: Isherad) {
-        const sheradTextToLower = data.toLowerCase();
+    function sherad({ sherad }: Isherad) {
+        const sheradTextToLower = sherad.toLowerCase();
         const sheradProdct = products.filter(
             (element: Iiten) =>
                 element.name.toLowerCase().includes(sheradTextToLower) ||
@@ -51,6 +57,7 @@ export function HomeProvider({ children }: IProvider) {
         const value = values.reduce((valueOne, valueTwo) => valueOne + valueTwo, 0);
         return value;
     }
+
     function AddItenCart(product: Iiten) {
         SetCart(true);
         const valid = currentSale.find((element) => element.id === product.id);
@@ -60,24 +67,35 @@ export function HomeProvider({ children }: IProvider) {
             setCurrentSale([...newList, valid]);
         } else {
             product.quant = 1;
-            setCurrentSale([...currentSale, product]);
+            setCurrentSale(data => [...data, product]);
         }
     }
-    function removeCart(product: Iiten) {
-        const item = currentSale.find((item) => item.id == product.id);
-        const newValue = currentSale.filter((item) => item.id !== product.id);
-        if (item.quant > 1) {
-            item.quant = item.quant - 1;
-            setCurrentSale([...newValue, item]);
-        } else {
-            setCurrentSale(newValue);
-            if (newValue.length == 0) {
-                SetCart(false);
+
+    function removeCart(product: number) {
+        const item = currentSale.find((item) => item.id == product);
+        const newValue = currentSale.filter((item) => item.id !== product);
+        if (item) {
+            if (item.quant > 1) {
+                item.quant = item.quant - 1;
+                setCurrentSale([...newValue, item]);
+            } else {
+                setCurrentSale(newValue);
+                if (newValue.length == 0) {
+                    SetCart(false);
+                }
             }
         }
     }
+
+    function logout() {
+        removeId()
+        removeToken()
+        navigate("/")
+    }
     return (
         <HomeContext.Provider value={{
+            modalCart,
+            setModalCart,
             sherad,
             get,
             filteredProducts,
@@ -87,7 +105,8 @@ export function HomeProvider({ children }: IProvider) {
             setCurrentSale,
             ContValue,
             AddItenCart,
-            removeCart
+            removeCart,
+            logout,
         }}>
             {children}
         </HomeContext.Provider>

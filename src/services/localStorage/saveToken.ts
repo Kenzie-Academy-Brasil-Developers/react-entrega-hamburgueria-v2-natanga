@@ -8,7 +8,7 @@ export function saveToken(token: Itoken) {
 }
 export function recoveryToken() {
     const token = localStorage.getItem("@TOKEN");
-    const tokenUser = JSON.parse(token);
+    const tokenUser = token && JSON.parse(token);
     return tokenUser;
 }
 
