@@ -9,7 +9,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler } from "react-hook-form/dist/types"
 import { StyledLoginPage } from "./style"
 import { StyledTypography } from "../../components/BaseTypography/style"
-import { Link, Navigate } from "react-router-dom"
+import { Link } from "react-router-dom"
+import sopping from "../../assets/icons/sopping.svg"
 
 function LoginPage() {
     const { register, handleSubmit, formState: { errors } } = useForm<IPerson>({
@@ -24,14 +25,25 @@ function LoginPage() {
     }
     return (
         <StyledLoginPage>
-            <section>
+            <section className="logo">
                 <div>
                     <StyledTypography tag="h1" classText="Heading1">
                         <span> Nono's</span> Burguer
                     </StyledTypography>
+                    <div className="slogan">
+                        <figure>
+                            <img src={sopping} alt="" />
+                        </figure>
+                        <StyledTypography tag="p" classText="Body">
+                            Onde  comer tem mais sabor
+                        </StyledTypography>
+                    </div>
                 </div>
             </section>
             <section>
+                <StyledTypography tag="h3" classText="Heading2">
+                    <span> Login</span>
+                </StyledTypography>
                 <div>
                     <form onSubmit={handleSubmit(SubmtLogin)}>
                         <Input id="email" label="E-mail" type="text" placeholder="insira seu e-mail" register={register} />

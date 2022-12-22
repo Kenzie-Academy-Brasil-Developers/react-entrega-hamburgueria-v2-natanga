@@ -48,4 +48,11 @@ export const StyledRegisterPage = styled.main`
         border: 2px solid var(--Color-grey-50);
         border-radius: 8px;
     }
+    @media (min-width: 700px)  {
+        section{
+        margin: 0 auto;
+        width: 30%;
+        height: 80%;
+    }
+    }
 `

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StlyesCart = styled.aside`
   width: 90%;
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   border-radius: 5px ;

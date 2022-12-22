@@ -2,22 +2,23 @@
 import { SubmitHandler, useForm } from "react-hook-form"
 import { Iregister } from "../../interface"
 import { yupResolver } from "@hookform/resolvers/yup";
-import { api } from "../../services/api/api"
 import { registerSchema } from "./registerSchema"
 import { StyledRegisterPage } from "./style"
 import { Input } from "../../Inputs";
 import { StyledButtons } from "../../styles/Buttons";
 import { StyledTypography } from "../../components/BaseTypography/style";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ErrosInputs } from "../../components/errosInputs";
+import { registerApi } from "../../services/api/registerApi";
 
 function RegisterPage() {
     const { register, handleSubmit, formState: { errors } } = useForm<Iregister>({
         mode: "onBlur",
         resolver: yupResolver(registerSchema),
     })
+
     const SubmtRegister: SubmitHandler<Iregister> = async (data) => {
-        const reponse = await api.post("/users", data)
+        const reponse = registerApi(data)
     }
 
     return (
@@ -38,7 +39,7 @@ function RegisterPage() {
                         {errors.name && <ErrosInputs>{errors.name.message}</ErrosInputs>}
                         <StyledButtons nameButtons="bntOne">Cadastrar</StyledButtons>
                     </form>
-                <Link to="/">Login</Link>
+                    <Link to="/">Login</Link>
                 </div>
             </section>
         </StyledRegisterPage>

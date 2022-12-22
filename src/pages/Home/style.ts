@@ -5,7 +5,7 @@ export const StyleMain = styled.main`
   width: 90vw;
   height: auto;
   @media (min-width: 700px) {
-    justify-content: center
+    justify-content: center;
     margin: 20px auto;
     width: 90vw;
     height: auto;
