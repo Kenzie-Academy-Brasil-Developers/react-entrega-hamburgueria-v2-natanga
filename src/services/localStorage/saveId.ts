@@ -9,7 +9,7 @@ export function saveId(id: IIdUser) {
 }
 export function recoveryId() {
   const id = localStorage.getItem("@USERID");
-  const idUser = JSON.parse(id);
+  const idUser = id && JSON.parse(id);
   return idUser;
 }
 export function removeId() {

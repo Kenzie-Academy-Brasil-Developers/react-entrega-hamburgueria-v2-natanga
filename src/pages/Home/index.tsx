@@ -1,5 +1,5 @@
 import { Header } from "../../components/Header";
-import PageCart from "../../components/pageCart";
+import PageCart from "../../components/PageCart";
 import { ProductsList } from "../../components/ProductsList";
 import { HomeProvider } from "../../context/HomeContext";
 import { StyleMain } from "./style";

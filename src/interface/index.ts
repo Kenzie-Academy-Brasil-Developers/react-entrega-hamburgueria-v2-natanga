@@ -11,6 +11,12 @@ export interface Iregister extends IPerson {
     passwordConfirm: string;
 }
 
+export interface IregisterApi{
+    email: string;
+    password: string;
+    name:string;
+}
+
 export interface bodyLogin {
     email: string;
     password: string;
@@ -41,6 +47,9 @@ export interface IAuthContextValue {
     loading: boolean;
     setLoading: React.Dispatch<React.SetStateAction<boolean>>;
     AuthLogin: () => void
+}
+export interface IRegisterContext{
+    registerApi: (data: IregisterApi) => Promise<void>
 }
 export interface Iiten {
     id: number,

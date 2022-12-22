@@ -1,4 +1,8 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
+
+interface Ifocus{
+  focus:boolean
+}
 
 export const StyledSheradItens = styled.form`
   width: 95%;
@@ -11,7 +15,7 @@ export const StyledSheradItens = styled.form`
   align-items: center;
   background: var(--Color-grey-0);
   border: 2px solid
-    ${({ focus }) => (focus ? "var(--Color-gray-100)" : "var(--Color-grey-50)")};
+    ${({ focus }:Ifocus) => (focus ? "var(--Color-gray-100)" : "var(--Color-grey-50)")};
   border-radius: 8px;
   button {
     height: 90%;

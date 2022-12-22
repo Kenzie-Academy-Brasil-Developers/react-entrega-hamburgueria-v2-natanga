@@ -7,18 +7,26 @@ import { StyledRegisterPage } from "./style"
 import { Input } from "../../Inputs";
 import { StyledButtons } from "../../styles/Buttons";
 import { StyledTypography } from "../../components/BaseTypography/style";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ErrosInputs } from "../../components/errosInputs";
-import { registerApi } from "../../services/api/registerApi";
+import { RegisterContext } from "../../context/RegisterContext";
+import { useContext } from "react";
 
 function RegisterPage() {
+    const { registerApi } = useContext(RegisterContext)
+
     const { register, handleSubmit, formState: { errors } } = useForm<Iregister>({
         mode: "onBlur",
         resolver: yupResolver(registerSchema),
     })
 
-    const SubmtRegister: SubmitHandler<Iregister> = async (data) => {
-        const reponse = registerApi(data)
+    const SubmtRegister: SubmitHandler<Iregister> = async ({ email, password, name }) => {
+        const data = {
+            email: email,
+            password: password,
+            name: name,
+        }
+        registerApi(data)
     }
 
     return (
