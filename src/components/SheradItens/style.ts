@@ -14,9 +14,7 @@ export const StyledSheradItens = styled.form`
   padding: 0px 10px 0px 15px;
   align-items: center;
   background: var(--Color-grey-0);
-  border: 2px solid
-
-  -gray-100)" : "var(--Color-grey-50)")};
+  border: 2px solid ${({ focus }:Ifocus) => (focus ? "var(--Color-gray-100)" : "var(--Color-grey-50)")};
   border-radius: 8px;
   button {
     height: 90%;
