@@ -38,7 +38,6 @@ export function AuthProvider({ children }: IProvider) {
             navigate("/")
         }
         api.defaults.headers.Authorization = `Bearer ${token}`
-
     }
 
     useEffect(AuthLogin,[])

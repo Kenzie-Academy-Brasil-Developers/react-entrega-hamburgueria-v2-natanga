@@ -1,9 +1,11 @@
+import { useEffect } from "react";
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Iiten, IProvider } from "../interface";
+import { api } from "../services/api/api";
 import { getItens } from "../services/api/getItens";
 import { removeId } from "../services/localStorage/saveId"
-import { removeToken } from "../services/localStorage/saveToken"
+import { recoveryToken, removeToken } from "../services/localStorage/saveToken"
 
 interface IHomeContext {
     modalCart: boolean;
@@ -36,6 +38,11 @@ export function HomeProvider({ children }: IProvider) {
     const navigate = useNavigate();
 
     async function get() {
+        const token = recoveryToken()
+        if (!token) {
+            navigate("/")
+        }
+        api.defaults.headers.Authorization = `Bearer ${token}`
         const response = await getItens();
         setProducts(response);
         setFilteredProducts(response);
@@ -92,6 +99,9 @@ export function HomeProvider({ children }: IProvider) {
         removeToken()
         navigate("/")
     }
+    useEffect(() => {
+        get()
+    }, [])
     return (
         <HomeContext.Provider value={{
             modalCart,

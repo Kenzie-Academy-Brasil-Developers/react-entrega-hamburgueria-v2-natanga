@@ -5,16 +5,12 @@ import { StlyesList } from "./style";
 
 export function ProductsList() {
 
-  const { get, filteredProducts } = useContext(HomeContext)
-
-  useEffect(() => {
-    get()
-  }, [])
+  const { filteredProducts } = useContext(HomeContext)
 
   return (
     <StlyesList>
       {filteredProducts?.map((product) =>
-        <Product product={product}  key={product.id} />
+        <Product product={product} key={product.id} />
       )}
     </StlyesList>
   );
