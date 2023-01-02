@@ -15,7 +15,7 @@ export function RoutePages() {
                     <RegisterPage />
                 </RegisterProvider>
             } />
-            <Route path="*" element={<Navigate to={"/Home"} />} />
+            <Route path="*" element={<Navigate to={"/"} />} />
         </Routes>
     )
 
